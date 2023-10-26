@@ -323,4 +323,188 @@ While some of these repositories directly relate to BDD style testing, others ma
  - 不准确性：AI 工具使用网络抓取从各种来源获取数据。由于上述原因，尽管 AI 有多种应用，但它不能被视为唯一可靠的选择，因为它需要经过人或机器的关键评估。
  - 原创性：AI 工具产生的结果在内容和结构上都很相似，生成的答复缺乏原创性或新颖性。
  - 性能：AI 的当前能力最多只能提供辅助。它确实增强了用户的效率，但还没有达到在没有手工干预/监督的情况下将活动交给 AI 的阶段
-   
+
+## Tools for GAASD
+
+First, you enter a description of an app you want to build. Then, GPT Pilot works with an LLM (currently GPT-4) to clarify the app requirements, and finally, it writes the code. It uses many AI Agents that mimic the workflow of a development agency.
+
+After you describe the app, the Product Owner Agent breaks down the business specifications and asks you questions to clear up any unclear areas.
+Then, the Software Architect Agent breaks down the technical requirements and lists the technologies that will be used to build the app.
+Then, the DevOps Agent sets up the environment on the machine based on the architecture.
+Then, the Tech Team Lead Agent breaks down the app development process into development tasks where each task needs to have:
+Description of the task (this is the main description upon which the Developer agent will later create code)
+ Description of automated tests that will need to be written so that GPT Pilot can follow TDD principles
+ Description for human verification, which is basically how you, the human developer, can check if the task was successfully implemented
+Finally, the Developer and the Code Monkey Agents take tasks one by one and start coding the app. The Developer breaks down each task into smaller steps, which are lower-level technical requirements that might not need to be reviewed by a human or tested with an automated test (eg. install some package).
+
+3 Main Pillars of GPT Pilot
+I call these the pillars because, since this is a research project, I wanted to be reminded of them as I work on GPT Pilot. I want to explore what’s the most that AI can do to boost developers’ productivity, so all improvements I make need to lead to that goal and not create something that writes simple, fully working apps but doesn’t work at scale.
+
+Pillar #1. Developer needs to be involved in the process of app creation
+As I mentioned above, I think that we are still far away from an LLM that can just be hooked up to a CLI and work by itself to create any app by itself. Nevertheless, GPT-4 works amazingly well when writing code. I use ChatGPT all the time to speed up my development process – especially when I need to work on some new technology or an API or if I need to create a standalone script. The first time I realized how powerful it can be was a couple of months ago when it took me 2 hours with ChatGPT to create a Redis proxy that would usually take 20 hours to develop from scratch. I wrote a whole post about that here.
+
+So, to enable AI to generate a fully working app, we need to allow it to work closely with the developer who oversees the development process and acts as a tech team lead while AI writes most of the code. So, the developer needs to be able to change the code at any moment, and GPT Pilot needs to continue working with those changes (eg. add an API key or fix an issue if an AI gets stuck).
+
+Here are the areas in which the developer can intervene in the development process:
+
+After each development task is finished, the developer should review it and make sure it works as expected (this is the point where you would usually commit the latest changes)
+After each failed test or command run – it might be easier for the developer to debug something (eg. if a port on your machine is reserved but the generated app is trying to use it – then you need to hardcode some other port)
+If the AI doesn’t have access to an external service – eg. in case you need to get and add an API key to the environment
+Pillar #2. The app needs to be coded step by step
+Let’s say you want to create a simple app, and you know everything you need to code and have the entire architecture in your head. Even then, you won’t code it out entirely, then run it for the first time and debug all the issues at once. Instead, you will split the app development into smaller tasks, implement one (like add routes), run it, debug, and then move on to the next task. This way, you can fix issues as they arise.
+
+The same should be in the case when AI codes.
+
+Like a human, it will make mistakes for sure, so for it to have an easier time debugging and for the developer to understand what is happening in the generated code, the AI shouldn’t just spit out the entire codebase at once. Instead, the app should be generated and debugged step by step just like a developer would do – eg. setup routes, add database connection, etc.
+
+Other code generators like Smol Developer and GPT Engineer work in a way that you write a prompt about the app you want to build, they try coding out the entire app and give you the entire codebase at once. While AI is great, it’s still far away from coding a fully working app from the first try so these tools give you the codebase that is really hard to get into and, more importantly, it’s infinitely harder to debug.
+
+I think that if GPT Pilot creates the app step by step, both AI and the developer overseeing it will be able to fix issues more easily, and the entire development process will flow much more smoothly.
+
+Pillar #3. GPT Pilot needs to be scalable
+GPT Pilot has to be able to create large production-ready apps and not only on small apps where the entire codebase can fit into the LLM context. The problem is that all learning that an LLM has is done in-context. Maybe one day, the LLM could be fine-tuned for each specific project, but right now, it seems like that would be a very slow and redundant process.
+
+The way that GPT Pilot addresses this issue is with context rewinding, recursive conversations, and TDD.
+
+Context rewinding
+The idea behind context rewinding is relatively simple – for solving each development task, the context size of the first message to the LLM has to be relatively the same. For example, the context size of the first LLM message while implementing development task #5 has to be more or less the same as the first message while developing task #50. Because of this, the conversation needs to be rewound to the first message upon each task.
+
+For GPT Pilot to solve tasks #5 and #50 in the same way, it has to understand what has been coded so far along with the business context behind all code that’s currently written so that it can create the new code only for the task that it’s currently solving and not rewrite the entire app.
+
+I’ll go deeper into this concept in the next blog post, but essentially, when GPT Pilot creates code, it makes the pseudocode for each code block that it writes, as well as descriptions for each file and folder it needs to create. So, when we need to implement each task, in a separate conversation, we show the LLM the current folder/file structure; it selects only the code that is relevant to the current task, and then, we add only that code to the original conversation that will write the actual implementation of the task.
+
+Recursive conversations
+Recursive conversations are conversations with the LLM that are set up in a way that they can be used “recursively”. For example, if GPT Pilot detects an error, it needs to debug it, but let’s say that another error happens during the debugging process. Then, GPT Pilot needs to stop debugging the first issue, fix the second one, and then get back to fixing the first issue. This is a crucial concept that, I believe, needs to work to make AI build large and scalable apps. It works by rewinding the context and explaining each error in the recursion separately. Once the deepest level error is fixed, we move up in the recursion and continue fixing errors until the entire recursion is completed.
+
+TDD (Test Driven Development)
+For GPT Pilot to scale the codebase, improve it, change requirements, and add new features, it needs to be able to create new code without breaking previously written code. There is no better way to do this than working with TDD methodology. For all code that GPT Pilot writes, it needs to write tests that check if the code works as intended so that whenever new changes are made, all regression tests can be run to check if anything breaks.
+
+I’ll go deeper into these three concepts in the next blog post, in which I’ll break down the entire development process of GPT Pilot.
+
+In this first blog post, I discussed the high-level overview of how GPT Pilot works. In posts 2 and 3, I show you:
+
+How do Developer and Code Monkey agents work together to implement code (write new files or update existing ones).
+How recursive conversations and context rewinding work in practice.
+How can we rewind the app development process and restore it from any development step.
+How are all agents structured – As you might’ve noticed, there are GPT Pilot agents, and some might be redundant right now, but I think these agents will evolve over time, so I wanted to build agents in a modular way, just like the regular code.
+
+## GPT Pilot – a dev tool that writes 95% of coding tasks [Part 2/3 – Coding Workflow]
+This is a second blog post in a 3-part series where I explain how my team and I created GPT Pilot – the AI coding agent that’s designed to work at scale and build production-ready apps with a developer’s help. In part #1 of this series, I discussed the high-level overview of GPT Pilot. The idea is that AI can now do 95% of all coding that we, developers, are doing. See how I used ChatGPT to code out an entire Redis proxy in 2 hours, which would usually take 20-30 developer hours. However, an app is of no use if it doesn’t fully work or solve the user’s problem. So, until real AGI arrives, you need a developer.
+
+So, this is how GPT Pilot came to life. It is designed to do 95% of the required coding and asks developers for reviews, such as when it becomes stuck and cannot move forward or needs something outside the app like an API key.
+
+In this post, I walk you through the entire process GPT Pilot goes through when coding an app. I share diagrams to provide a visual representation of everything that’s going on behind the scenes in GPT Pilot. I’m a visual person, so I always create diagrams.To understand how GPT Pilot’s coding works, there are 3 concepts – context rewinding, recursive conversations, and TDD. See my introduction where I described in them in part #1 of this series.
+
+The GPT Pilot coding workflow contains 5 steps:
+
+Take the next development task in line
+Break down the task into development steps
+Take the next development step
+Fetching of currently implemented code
+Write code for the current step
+Run the code or a command
+Test the new code changes
+Debug the development step or go to the next step
+Coding workflow is my favorite part of GPT Pilot so let’s dive in. Here is a diagram of how it looks like visually:
+
+GPT Pilot – a dev tool that writes 95% of coding tasks [Part 2/3 – Coding Workflow]
+This is a second blog post in a 3-part series where I explain how my team and I created GPT Pilot – the AI coding agent that’s designed to work at scale and build production-ready apps with a developer’s help. In part #1 of this series, I discussed the high-level overview of GPT Pilot. The idea is that AI can now do 95% of all coding that we, developers, are doing. See how I used ChatGPT to code out an entire Redis proxy in 2 hours, which would usually take 20-30 developer hours. However, an app is of no use if it doesn’t fully work or solve the user’s problem. So, until real AGI arrives, you need a developer.
+
+So, this is how GPT Pilot came to life. It is designed to do 95% of the required coding and asks developers for reviews, such as when it becomes stuck and cannot move forward or needs something outside the app like an API key.
+
+In this post, I walk you through the entire process GPT Pilot goes through when coding an app. I share diagrams to provide a visual representation of everything that’s going on behind the scenes in GPT Pilot. I’m a visual person, so I always create diagrams.To understand how GPT Pilot’s coding works, there are 3 concepts – context rewinding, recursive conversations, and TDD. See my introduction where I described in them in part #1 of this series.
+
+The GPT Pilot coding workflow contains 5 steps:
+
+Take the next development task in line
+Break down the task into development steps
+Take the next development step
+Fetching of currently implemented code
+Write code for the current step
+Run the code or a command
+Test the new code changes
+Debug the development step or go to the next step
+Coding workflow is my favorite part of GPT Pilot so let’s dive in. Here is a diagram of how it looks like visually:
+
+## 1 Task breakdown
+Two important concepts will be mentioned throughout this blog post – development tasks and development steps.
+
+GPT Pilot works in a way that, after breaking down the specifications for developing an app, it creates development tasks that will lead to a fully working app. Development tasks are basically high-level descriptions of what needs to be done that a developer will take and start implementing. Think of them as tasks in Jira (btw, I hate Jira…not sure if anyone relates, but I just wanted to let it out of my system). Here is an example of a development task:
+
+In the diagram above, you see 3 task properties:
+
+description: what needs to be implemented to fulfill this task
+user_review_goal: how can the lead developer determine if the current task is finished – a crucial pillar of GPT Pilot is a developer must be involved throughout the coding process so that you can ensure the development process is going as planned and understand the codebase along the way
+programmatic_goal: the kind of automated test GPT Pilot should write to test if this entire development task works as expected. After a development step, GPT Pilot writes unit tests, and after a development task, it writes integration or E2E tests. 
+Now, when you start developing a task from Jira (development task), you will split it into smaller chunks (we call them development steps) that are actionable items you would set out to implement into the codebase. Each development step can be one of the following:
+
+Command run – a command that needs to be run on the machine, such as a command to install a dependency, start the app to check if the previously implemented steps work, or create a folder.
+Code change – the most important development step that explains what exactly needs to be implemented in the actual code to fulfill the current step. It can contain new code that needs to be written or code that needs to be changed. The way it works is the code change is a detailed, human-readable description of what needs to be implemented. It contains both the code that needs to be implemented and the description of what it is being used for. This is very similar to when you ask ChatGPT to code something. It will give you the code as well as the explanations of why it wrote that code.
+The reason for this is that code implementation is not so simple. Sometimes, we need to add a snippet into existing code or change the existing implementation. That is why we separated the outline of the coding change (this development task) and the actual implementation of this change that the CodeMonkey agent is dedicated to. I will go deeper into that in the #3 Coding section. Here is an example of a code change:
+Human intervention – a development step that AI cannot do by itself and needs human help in fulfilling the step. Then, GPT Pilot asks the developer to do something, and when he/she is done, they write “continue,” and GPT Pilot will continue with the implementation. Here are some reasons why human intervention might be needed:
+There is a needed API key (e.g., Twitter API key to fetch data from Twitter)
+GPT Pilot became stuck in a debugging process, and it either filled the entire context length or the recursion conversation was too deep and became unproductive to continue down the recursion depth.
+GPT Pilot needs a verification if something works as expected – e.g., GPT Pilot is not sure if Mongo is installed properly on the machine and might ask the developer to run some sudo commands and see if it works as expected.
+
+## 2 Fetching of currently implemented code
+It’s easy for AI to write a new file that contains code, but in reality, that is rarely the case. For the most part, we write into the existing files and either change the existing code or add new code. Now, AI can do this easily if you give it all of the existing code and instructions for what needs to be implemented. The problem arises when an app scales and the codebase becomes so large that it cannot fit into the LLM context. And this is actually a very common case – at least until we have LLMs with 1M tokens, which doesn’t seem to be coming soon.
+
+When you work on a task in a big codebase, you usually look at a smaller part of the codebase (maybe 1,000 lines) and work only with that subset of code to implement the task.
+
+So, to address this issue and make GPT Pilot truly scalable so that it can create and upgrade large production-ready codebases, we must create a way for the AI to select the smaller part of the codebase (e.g., those 1,000 lines) on which it will implement the current task. Once it’s finished, we can simply add the finished lines back into the original codebase.Let me start explaining this by telling you what happens when GPT Pilot writes code and creates new files and folders. For each file and folder it must create, it needs to write a description of what the idea is behind the file or folder it wants to create. For example, it might want to create a folder utils for which it will write:
+
+1
+2
+3
+Contains utility modules that provide generic, reusable solutions to common problems encountered throughout the application.
+These utilities are not specific to the app's core domain but offer auxiliary functionality to support and streamline the primary codebase.
+They encapsulate best practices, reduce code repetition, and make the overall code cleaner and easier to maintain. Examples include functions for data formatting, error handling, debugging tools, string manipulation, data validation, and other shared operations that don't fit within specific modules or components of the app.
+Now, for each function GPT Pilot creates, it writes a description of what the function is supposed to do – that is a pseudocode for the entire codebase.
+
+Now that you know what happens when GPT Pilot writes code, you can understand how it fetches the relevant code for each development step.
+
+Before GPT Pilot codes each step, it first fetches the relevant part of the codebase in a completely separate LLM conversation. That conversation is set up in 3 steps.
+
+AI is given the development step description along with the entire project file/folder structure and descriptions for each file and folder. From this, LLM tells us which files are relevant for the mentioned step.
+After narrowing down the necessary files, we give the LLM pseudocode for each file it listed and ask it to tell us which functions are relevant for the current development step.
+Once we know the pseudocode it selected, we can fetch the actual code and put it into the original conversation, where the LLM will write the description of what needs to be implemented.
+If the app becomes extremely huge, we can improve this by first giving the LLM the folders, from which it will select folders, and then we give it relevant files. Before each of these steps, we can also rewind the conversation to the beginning to leave more room in the context.
+
+Here is a diagram of what this looks like:
+
+## 3 Coding
+Now that we can create an LLM message that contains all code necessary for someone to implement a specific task, we can start with the actual coding process. This happens in a 2-part process:
+
+First, the LLM writes the description of what needs to be implemented along with the code. If the entire file needs to be coded, LLM’s response will contain all the code, but if only a part of the code inside a file needs to be changed, LLM will tell us things like After the Mongo setup, add the following lines of code… As you can imagine, by this being stochastic rather than deterministic, we need to ensure that the written code is inserted into appropriate places or changed correctly.
+Here is where the CodeMonkey agent steps in. It is called code monkey because it doesn’t make any decisions but rather simply implements the code that the Developer agent writes. It is given the code relevant for the current task (that is previously selected by LLM in the code-fetching phase) and the description that the Developer agent created in development step #1. Then, the only thing it needs to return are the completely coded sections/files that we can just insert/replace in the codebase.
+
+## 4 Testing
+There are 2 places where testing is done – (1) after each development task when GPT Pilot creates integration tests that test if the high-level features work as intended and (2) after each development step when it creates smaller unit tests that ensure all functions work as expected.
+
+GPT Pilot has 3 different types of test it can do:
+
+Automated tests are the preferred way of testing a step or task because they will be used in a regression test suite so that GPT Pilot can be sure that new code changes don’t break old features. However, automated tests are not always the most optimal way to test new code.
+Command run is a test where we run a specific command and give the output to the LLM, which then tells us if the implementation was successful. For example, we don’t need to create an automated test that will check if we can run an app with npm run start – for that, a simple command run is enough to check if we successfully set up our environment.
+Human intervention is the final way to test the app, and it is needed whenever AI cannot test the implementation itself. This is needed, for example, when there are some visual aspects (e.g., CSS animations) that must be checked to see if they work correctly.
+After running each test, if successful, GPT Pilot takes on the next task or step and continues with coding, but when the test fails, GPT Pilot needs to debug the error.
+
+## 5 Debugging
+The debugging process needs to be so robust so that it can be started on any bug that arises, regardless of the error. It also needs to be able to debug any issue that happens during the debugging process. This is where recursive conversations come in, which are conversations with the LLM that are set up in a way that they can be used “recursively.”
+
+Let’s look at the example in the image below. It represents a flow that GPT Pilot goes through when working on a development task that has 5 development steps. In this example, during the development of step #3, an error occurs – let’s say it implements a specific code change but after running a test, it fails. Then, it goes into the recursion level #1 to debug this issue. It breaks down what needs to be done to fix this issue into 2 steps, but during the implementation of the first step, another error happens. For example, a needed dependency for fixing the error #1 doesn’t exist. GPT Pilot then goes into the recursion level #2, which it breaks down into 3 steps. In the third step, another error occurs. Then, it goes to the third recursion level, which has only 1 step. Once that step is successfully executed, GPT Pilot goes back to the recursion level #2 and finishes debugging error #2. After that, it goes back to debugging error #1, and finally, after error #1 is fixed, it goes back to the development step #3 after which it continues the app implementation.
+
+![gpt-pilot-frame-1-1](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/702080f2-fd3a-4c44-8abd-2f8e5d6833f1)
+
+
+When the recursions go 5 levels deep, GPT Pilot will stop the debugging process and ask the developer to fix the initial issue it started with. Once the developer resolves this issue, they write the results to GPT Pilot. Then, it can continue the development process as if it debugged the issue itself.
+
+Conclusion
+In the first post of this series, I discussed the high-level overview of how GPT Pilot works. In this post, I described the GPT Pilot Coding Workflow, including:
+
+How Developer and CodeMonkey agents work together to implement code (write new files or update existing ones),
+How recursive conversations and context rewinding work in practice, and
+Rewinding the app development process and restoring it from any development step.
+In the final post, I will dive deep into how all the agents are structured. We built the agents modularly because we know they will evolve over time.Please head over to GitHub, clone the GPT Pilot repository, experiment with it, and send me your feedback. I want GPT Pilot to be as helpful to developers as possible, so let me know what you think, how it can be improved, or what works well. Add comments at the bottom this post or email me at zvonimir@pythagora.ai. And while you’re at it, please star our repo so that we can spread the word.
+
+
+
