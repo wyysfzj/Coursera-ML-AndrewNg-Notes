@@ -407,12 +407,23 @@ Test the new code changes
 Debug the development step or go to the next step
 Coding workflow is my favorite part of GPT Pilot so let’s dive in. Here is a diagram of how it looks like visually:
 
-GPT Pilot – a dev tool that writes 95% of coding tasks [Part 2/3 – Coding Workflow]
+![pythagora-product-development-frame-1](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/f281e19d-f538-493b-a650-0b9c741da195)
+
+![pythagora-product-development-frame-3-1](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/c2f4b367-06d1-4036-95cb-3a1078ab2709)
+
+
+## GPT Pilot – a dev tool that writes 95% of coding tasks [Part 2/3 – Coding Workflow]
 This is a second blog post in a 3-part series where I explain how my team and I created GPT Pilot – the AI coding agent that’s designed to work at scale and build production-ready apps with a developer’s help. In part #1 of this series, I discussed the high-level overview of GPT Pilot. The idea is that AI can now do 95% of all coding that we, developers, are doing. See how I used ChatGPT to code out an entire Redis proxy in 2 hours, which would usually take 20-30 developer hours. However, an app is of no use if it doesn’t fully work or solve the user’s problem. So, until real AGI arrives, you need a developer.
 
 So, this is how GPT Pilot came to life. It is designed to do 95% of the required coding and asks developers for reviews, such as when it becomes stuck and cannot move forward or needs something outside the app like an API key.
 
 In this post, I walk you through the entire process GPT Pilot goes through when coding an app. I share diagrams to provide a visual representation of everything that’s going on behind the scenes in GPT Pilot. I’m a visual person, so I always create diagrams.To understand how GPT Pilot’s coding works, there are 3 concepts – context rewinding, recursive conversations, and TDD. See my introduction where I described in them in part #1 of this series.
+
+![262046521-54a8ec24-a2ea-43a6-a494-03139d4e43f5](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/b30165be-fabc-42f1-837d-07777cb2fbeb)
+
+
+![gpt-pilot-coding-workfl](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/16cba26c-91c0-467a-99c2-e6fc02f454f6)
+
 
 The GPT Pilot coding workflow contains 5 steps:
 
@@ -430,6 +441,9 @@ Coding workflow is my favorite part of GPT Pilot so let’s dive in. Here is a d
 Two important concepts will be mentioned throughout this blog post – development tasks and development steps.
 
 GPT Pilot works in a way that, after breaking down the specifications for developing an app, it creates development tasks that will lead to a fully working app. Development tasks are basically high-level descriptions of what needs to be done that a developer will take and start implementing. Think of them as tasks in Jira (btw, I hate Jira…not sure if anyone relates, but I just wanted to let it out of my system). Here is an example of a development task:
+
+![gpt-pilot-gpt-pilot-development-task-example](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/0aaef9b3-ed10-4a75-8895-39a4139880e1)
+
 
 In the diagram above, you see 3 task properties:
 
@@ -471,6 +485,9 @@ Once we know the pseudocode it selected, we can fetch the actual code and put it
 If the app becomes extremely huge, we can improve this by first giving the LLM the folders, from which it will select folders, and then we give it relevant files. Before each of these steps, we can also rewind the conversation to the beginning to leave more room in the context.
 
 Here is a diagram of what this looks like:
+
+![gpt-pilot-copy-of-gpt-pilot-selecting-code-for-llm](https://github.com/wyysfzj/Coursera-ML-AndrewNg-Notes/assets/16334545/a15f4d48-bfd8-483f-b852-6a633ff3579f)
+
 
 ## 3 Coding
 Now that we can create an LLM message that contains all code necessary for someone to implement a specific task, we can start with the actual coding process. This happens in a 2-part process:
