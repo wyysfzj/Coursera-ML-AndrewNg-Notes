@@ -1,3 +1,14 @@
+https://marklodato.github.io/visual-git-guide/index-zh-cn.html
+
+https://pyloong.github.io/pythonic-project-guidelines/?continueFlag=2e8110d633f41c663da2dd6774e5e2b2
+
+lightning.ai/lightning-ai/studios/chat-with-your-code-using-rag
+
+https://docs.anthropic.com/claude/prompt-library
+
+https://quail.ink/op7418/p/e7ae80e58d95e69893e68782efbc8ce5bcbae78388e68ea8e88d90-codesignale68f90e7a4bae5b7a5e7a88be69599e7a88b?continueFlag=2e8110d633f41c663da2dd6774e5e2b2
+
+
 I will start the new application, and create a repository AppA on github, and as a owner, I will worked on main branch . now you are git expert, provide a set of commands for below scenarios. 1. clone the repository in the local. 2 code in local with IDE, which include add source code file, modify source code file, create new sub folder, 3.will comite local change to git. please give me the set of command lines one by one
 
 ![GPT-4-32k](https://qph.cf2.poecdn.net/main-thumb-pb-3010-200-hdigbpuraghmvxelmnbgjgduanukevwx.jpeg)
