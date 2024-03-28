@@ -503,3 +503,40 @@ This setup sketches out the structure and flow of the system, with placeholders 
 
 For actual deployment and integration with LangChain, you'd need to configure access to LangChain's APIs and adjust the refinement logic to utilize AI models appropriately for processing feedback and refining user stories.
 
+## Prompt:
+should we provide the associate use requirement into the above template? if yes, pelase revise the template
+
+## Response:
+Yes, it would be beneficial to include the associated user requirement in the prompt template. This will provide context for the human BA and ensure that the conversation stays focused on the specific requirement being discussed. Here's the revised template:
+
+Prompt:
+
+```crmsh
+As an AI language model, I am here to assist you in enhancing the user stories we have generated based on the following user requirement:
+
+[Insert the associated user requirement here]
+
+To ensure that the user stories accurately capture the intended functionality and meet the project's goals, please provide your valuable input and feedback.
+
+Let's review each user story related to this requirement:
+
+[Insert the generated user stories here, separated by numbers or bullet points]
+
+For each user story, please consider the following questions:
+
+1. Does the user story align with the associated user requirement? If not, how can we modify the user story to better reflect the requirement?
+
+2. Does the user story clearly convey the desired functionality from the user's perspective? If not, how can we improve the clarity and specificity of the user story?
+
+3. Are there any missing details, such as user roles, conditions, or acceptance criteria, that should be included to make the user story more comprehensive? Please provide any additional information that you think is necessary.
+
+4. Do you have any concerns or suggestions regarding the feasibility, priority, or alignment of the user story with the overall project objectives? If so, please share your thoughts and recommendations.
+
+5. Are there any dependencies, constraints, or risks associated with the user story that we should consider? Please mention any relevant factors that may impact the implementation or success of the user story.
+
+6. Do you have any other comments, insights, or examples that could help refine the user story and ensure it effectively captures the user's needs within the context of the associated requirement?
+
+Please provide your responses and feedback for each user story, and feel free to ask any questions or seek clarification if needed. Our goal is to collaborate and iterate on these user stories until we have a set that accurately represents the user requirement and aligns with the project's success criteria.
+
+Thank you for your valuable input and expertise. Let's work together to create exceptional user stories that fulfill the associated user requirement!
+```
