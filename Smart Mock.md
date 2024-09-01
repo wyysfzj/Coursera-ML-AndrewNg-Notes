@@ -193,3 +193,9 @@ The script still retains the key elements of Jobs' style:
 - Creating a sense of shared excitement
 
 This version should be easier to deliver and understand while still maintaining the inspirational quality of a Steve Jobs-style presentation. Is there anything else you'd like me to adjust in the script?
+
+
+https://www.piglei.com/articles/programmer-reading-list-1/?continueFlag=122219adbb57d410d8afd0fb89bb5a50
+
+https://qiangmzsx.github.io/Software-Engineering-at-Google/#/
+
