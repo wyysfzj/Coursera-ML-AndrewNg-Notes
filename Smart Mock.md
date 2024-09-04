@@ -1,3 +1,104 @@
+https://gist.github.com/kevin-smets/8568070
+
+To install Meslo Nerd Font, follow these steps:
+
+1. Download the font:
+   - Go to the Nerd Fonts website (https://www.nerdfonts.com/)
+   - Find "Meslo" in the fonts list
+   - Click "Download" to get the zip file
+
+2. Extract the downloaded zip file
+
+3. Install the font:
+
+   For Windows:
+   - Open the extracted folder
+   - Select all font files (.ttf)
+   - Right-click and choose "Install" or "Install for all users"
+
+   For macOS:
+   - Open the extracted folder
+   - Double-click each .ttf file
+   - Click "Install Font" in the preview window that appears
+
+   For Linux (Ubuntu/Debian):
+   - Open a terminal
+   - Create a directory for user fonts if it doesn't exist:
+     ```
+     mkdir -p ~/.local/share/fonts
+     ```
+   - Copy the font files to this directory:
+     ```
+     cp path/to/extracted/MesloLGS*.ttf ~/.local/share/fonts/
+     ```
+   - Update the font cache:
+     ```
+     fc-cache -f -v
+     ```
+
+4. Configure your terminal:
+   - Open your terminal's preferences/settings
+   - Find the font settings
+   - Select "MesloLGS NF" or similar (exact name may vary)
+
+5. Restart your terminal application
+
+After installation, run `p10k configure` again in your terminal to reconfigure Powerlevel10k with the new font.
+
+If you encounter any issues during this process or need more specific instructions for your system, let me know and I'll be happy to help further.
+
+
+Yes, there are easier approaches to install fonts on macOS, especially when dealing with multiple font files. Here are two simpler methods:
+
+1. Using Font Book (drag-and-drop method):
+
+   
+
+   1. Extract the downloaded Meslo Nerd Font zip file
+   2. Open Font Book (you can find it using Spotlight or in the Applications folder)
+   3. Select all the .ttf files from the extracted folder
+   4. Drag and drop all selected files into the Font Book window
+   5. Font Book will install all the fonts at once
+
+2. Using the Terminal (command line method):
+
+   
+
+   ```bash
+# Create a fonts directory if it doesn't exist
+   mkdir -p ~/Library/Fonts
+
+   # Move to the directory where you downloaded the font
+   cd ~/Downloads/nerd-fonts-master  # Adjust this path as necessary
+
+   # Copy all .ttf files to the Fonts directory
+   cp *.ttf ~/Library/Fonts/
+
+   # Clear the font cache
+   atsutil databases -remove
+
+   # Restart the Finder to recognize new fonts
+   killall Finder
+
+   echo "Fonts installed successfully!"
+   
+```
+
+   To use this script:
+   1. Open Terminal
+   2. Copy and paste the entire script
+   3. Press Enter to run it
+
+   Make sure to adjust the `cd` command to match the location of your downloaded font files.
+
+After installing the fonts using either method, remember to:
+
+1. Restart any open applications (especially your terminal) to recognize the new fonts
+2. Configure your terminal to use the new Meslo Nerd Font
+3. Run `p10k configure` again to set up Powerlevel10k with the new font
+
+Would you like me to explain any part of these methods in more detail?
+
 Thank you for providing the context. I'll create a 10-minute presentation for the CIO based on this information about the Smart Mock Service Platform. I'll include both slide content and a presentation script.
 
 # Smart Mock Service Platform Presentation
