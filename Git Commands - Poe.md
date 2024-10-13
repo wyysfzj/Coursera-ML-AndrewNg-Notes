@@ -1,3 +1,115 @@
+开源作者 Hassan 的 9 款 AI 相关开源项目：
+1. RoomGPT - 用 AI 重新设计你的房间
+github.com/Nutlope/roomGPT
+
+上传房间照片，通过 AI 生成你的梦想房间。
+
+这是 RoomGPT.io 的早期开源版本（RoomGPT.io 是一个付费的 SaaS 产品），不需要身份验证、支付或其他额外功能，简单易于克隆、部署和试用。
+
+工作原理
+
+它使用一个名为 ControlNet 的机器学习模型来生成房间的不同风格图片。这个应用程序允许你上传任何房间的照片，通过一个 Next.js API 路由将其发送到这个机器学习模型，返回生成的房间图像。机器学习模型托管在 Replicate 平台上。
+
+2. AI Commits - 一个用 AI 为你编写 git 提交信息的 CLI 工具
+github.com/Nutlope/aicommits
+
+这是一个 CLI 工具，它会使用 AI 为你编写 git 提交信息。你再也不用自己写提交信息了。
+
+工作原理
+
+这个 CLI 工具运行 git diff 来抓取你所有的最新代码更改，然后将这些更改发送到 OpenAI 的 GPT-3，接着返回 AI 生成的提交信息。
+
+3. RestorePhotos.io - 使用 AI 修复老旧和模糊的人脸照片。
+github.com/Nutlope/restorePhotos
+
+这个项目通过 AI 修复老旧的人脸照片。
+
+工作原理
+它使用了来自应用研究中心（Applied Research Center）的 GFPGAN 机器学习模型，该模型托管在 Replicate 平台上，用于修复人脸照片。这个应用程序允许你上传任何照片，并通过一个 Next.js API 路由将其发送到这个机器学习模型，最后返回修复后的照片。
+
+4. TurboSeek - 受 Perplexity 启发的 AI 搜索引擎（Perplexity山寨）
+
+ github.com/Nutlope/turboseek
+
+TurboSeek 是一个开源的 AI 搜索引擎，由 Together.ai 提供支持。
+
+工作原理
+- 接收用户的问题
+- 通过 Bing 搜索 API 查找前 6 条搜索结果并展示出来
+- 从 Bing 返回的 6 个链接中抓取文本并将其存储为上下文
+- 向 Mixtral-8x7B 发送用户的问题和上下文，实时返回答案
+- 向 Llama-3-8B 发送请求，生成 3 个相关的后续问题供用户继续提问
+
+5. Llama Coder - 开源的 Claude 工件 – 使用 Llama 3.1 405B 构建
+github.com/Nutlope/llamacoder
+
+这是一个开源的 Claude 工件，能够通过一个提示词生成小型应用程序。由 Llama 3 405B 和 Together.ai 提供支持。
+
+6. Napkins.dev - 从截图到应用程序
+github.com/Nutlope/napkins
+
+这是一个开源的从线框图生成应用程序的工具。由 Llama 3.2 Vision 和 Together.ai 提供支持。
+
+7. PDFToChat - 使用 AI 与 PDF 对话
+github.com/Nutlope/pdftochat
+
+只需几秒钟，即可与您的 PDF 进行对话。由 Together AI 和 Pinecone 提供支持。
+
+技术栈
+框架使用 Next.js App Router
+通过 Together AI 推理使用 Mixtral 来提供大语言模型（LLM）
+使用 Together AI 提供的 M2 Bert 80M 进行嵌入向量生成
+RAG 代码使用 LangChain.js
+向量数据库使用 MongoDB Atlas
+PDF 存储使用 Bytescale
+托管和 Postgres 数据库由 Vercel 提供
+用户认证使用 Clerk
+样式使用 Tailwind CSS
+
+8. TwitterBio - 使用 Mixtral 和 GPT-3.5 生成你的 Twitter 简介
+github.com/Nutlope/twitterbio
+
+这个项目通过 AI 为你生成 Twitter（X）简介。
+
+工作原理
+该项目同时使用 Mixtral 和 GPT-3.5，并通过流式传输生成 Twitter 简介。它根据表单和用户输入构建提示词，然后将其发送到 Together.ai 的 Mixtral API 或 OpenAI 的 GPT-3.5 API，随后将生成的响应流式传输回应用程序。
+
+9. notesGPT - 录制语音笔记，并进行转录、总结以及生成任务
+
+github.com/Nutlope/notesGPT
+
+只需几秒钟即可从笔记中生成行动项。由 Convex、Together.ai 和 Whisper 提供支持。
+
+技术栈
+数据库和云函数使用 Convex
+框架使用 Next.js App Router
+LLM 使用 Together 推理（Mixtral）
+搜索嵌入向量使用 Together Embeddings
+语音笔记存储使用 Convex File Storage
+向量搜索使用 Convex Vector Search
+转录使用 Replicate 的 Whisper
+用户认证使用 Clerk
+样式使用 Tailwind CSS
+
+10. ExploreCareers - 使用 AI 根据你的兴趣和技能探索职业
+github.com/Nutlope/explorecareers
+
+只需几秒钟，即可探索与你相关的职业。由 Together.ai 提供支持。
+
+技术栈
+这个应用允许用户上传简历，填写一些兴趣爱好，并获取一份可能适合的职业清单。
+LLM 使用 Llama-3-70B
+AI API 推理使用 Together.ai
+网站分析使用 Plausible
+数据可视化使用 Reactflow
+LLM 可观测性使用 Helicone
+框架使用 Next.js App Router
+PDF 存储使用 S3 / ByteScale
+托管与功能支持使用 Vercel
+样式使用 Tailwind CSS
+
+
+
 https://marklodato.github.io/visual-git-guide/index-zh-cn.html
 
 https://pyloong.github.io/pythonic-project-guidelines/?continueFlag=2e8110d633f41c663da2dd6774e5e2b2
