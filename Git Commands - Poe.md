@@ -28,6 +28,12 @@ ff
 
 git push --force origin YOUR_BRANCH_NAME
 
+git-filter-repo --email-callback '
+if b"\"" in email and b"@outlook.com\"" in email:
+    return email.replace(b"\"", b"")
+else:
+    return email
+'
 
 开源作者 Hassan 的 9 款 AI 相关开源项目：
 1. RoomGPT - 用 AI 重新设计你的房间
