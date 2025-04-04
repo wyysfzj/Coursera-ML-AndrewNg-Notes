@@ -1,3 +1,33 @@
+[user]
+    name = 34007728
+    email = myemail@outlook.com
+
+git filter-branch --env-filter '
+OLD_EMAIL="\"myemail@outlook.com\""
+CORRECT_EMAIL="myemail@outlook.com"
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
+
+
+# Install git-filter-repo first (if not already installed)
+# pip install git-filter-repo
+
+git-filter-repo --email-callback '
+if email == b"\"myemail@outlook.com\"":
+    return b"myemail@outlook.com"
+return email
+'
+
+git push --force origin YOUR_BRANCH_NAME
+
+
 开源作者 Hassan 的 9 款 AI 相关开源项目：
 1. RoomGPT - 用 AI 重新设计你的房间
 github.com/Nutlope/roomGPT
