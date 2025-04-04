@@ -35,6 +35,9 @@ else:
     return email
 '
 
+git-filter-repo --email-callback 'return b"myemail@outlook.com"'
+git push --force origin main
+
 开源作者 Hassan 的 9 款 AI 相关开源项目：
 1. RoomGPT - 用 AI 重新设计你的房间
 github.com/Nutlope/roomGPT
