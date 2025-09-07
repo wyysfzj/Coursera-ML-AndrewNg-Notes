@@ -1,0 +1,226 @@
+<mxfile host="app.diagrams.net" modified="2025-09-07T08:13:24Z" agent="python" version="20.8.16" editor="diagramly" type="device" compressed="false">
+  <diagram id="logical-arch-v4" name="Developer Portal + Sandbox (Logical, v4)">
+    <mxGraphModel dx="1920" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Developer Portal with Isolated Sandbox + MCP and LLM Assistant" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="380" y="10" width="1160" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="laneClient" value="Clients" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="360" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="laneEdge" value="Edge and Identity" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="400" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lanePortal" value="Developer Portal" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="70" width="420" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="laneCtrl" value="Sandbox Control Plane" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="70" width="360" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="laneAI" value="LLM Runtime (self-hosted or vendor)" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#f2f2f2;strokeColor=#999999;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="270" width="440" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="laneSandbox" value="Sandbox Cloud Account (no connectivity to Production)" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#f5f5f5;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="270" width="1140" height="530" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="laneProd" value="Production (Separate Account and VPC) &#8212; NO ROUTE" style="swimlane;horizontal=0;rounded=1;html=1;startSize=28;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="270" width="260" height="530" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="devUser" value="External Developer&#10;Apps and SDKs&#10;Postman or CLI&#10;Webhook Receiver" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#6c8ebf;fillColor=#ffffff;" vertex="1" parent="laneClient">
+          <mxGeometry x="20" y="40" width="300" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="waf" value="WAF and CDN" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#d6b656;fillColor=#ffffff;" vertex="1" parent="laneEdge">
+          <mxGeometry x="20" y="30" width="150" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="apiGw" value="API Gateway&#10;Routing, Auth, Rate Limits, Idempotency" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#d6b656;fillColor=#ffffff;" vertex="1" parent="laneEdge">
+          <mxGeometry x="190" y="30" width="180" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="idp" value="Identity Provider (Sandbox)&#10;OAuth2 or OIDC and API Keys" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#d6b656;fillColor=#ffffff;" vertex="1" parent="laneEdge">
+          <mxGeometry x="380" y="30" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="portal" value="Portal Core&#10;Docs and Explorer&#10;Keys and Apps&#10;Logs and Replay&#10;Webhook Tester" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#9673a6;fillColor=#ffffff;" vertex="1" parent="lanePortal">
+          <mxGeometry x="20" y="30" width="220" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="assistantUI" value="LLM Assistant UI&#10;Chat and actions&#10;Apply to Explorer&#10;Export snippets" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#9673a6;fillColor=#ffffff;" vertex="1" parent="lanePortal">
+          <mxGeometry x="260" y="30" width="140" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="mcp" value="Embedded MCP Server&#10;Session memory&#10;Tool routing&#10;Policy guardrails" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#9673a6;fillColor=#ffffff;" vertex="1" parent="lanePortal">
+          <mxGeometry x="20" y="170" width="380" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ctrl" value="Sandbox Manager&#10;Namespaces and Policies&#10;Seeding and TTL&#10;DNS and Ingress" style="rounded=1;whiteSpace=wrap;html=1;spacing=8;strokeColor=#d79b00;fillColor=#ffffff;" vertex="1" parent="laneCtrl">
+          <mxGeometry x="20" y="30" width="300" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="llmRuntime" value="LLM Runtime&#10;Hosted model API&#10;Prompt and retrieval&#10;Redaction" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#999999;fillColor=#ffffff;" vertex="1" parent="laneAI">
+          <mxGeometry x="20" y="40" width="380" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dnsIngress" value="Ingress and DNS&#10;*.sbx.api.example.com" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#d5e8d4;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="20" y="40" width="250" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="observability" value="Observability&#10;OTel traces, logs, metrics&#10;Replay service" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#d5e8d4;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="290" y="40" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="secrets" value="Secrets Manager&#10;Sandbox-only secrets" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#d5e8d4;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="570" y="40" width="230" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="toolSpec" value="Tool: OpenAPI and Spec" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#ffffff;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="20" y="140" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="toolScenario" value="Tool: Scenario templates" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#ffffff;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="260" y="140" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="toolObs" value="Tool: Observability search" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#ffffff;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="500" y="140" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="toolCodegen" value="Tool: Code generation" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#ffffff;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="740" y="140" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="k8s" value="Kubernetes Cluster (namespace per sandbox)" style="swimlane;rounded=1;html=1;startSize=24;strokeColor=#82b366;fillColor=#ffffff;fontStyle=1;" vertex="1" parent="laneSandbox">
+          <mxGeometry x="20" y="220" width="1060" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ns1" value="Namespace: sbx-123" style="swimlane;rounded=1;html=1;startSize=22;strokeColor=#000000;fillColor=#dae8fc;" vertex="1" parent="k8s">
+          <mxGeometry x="20" y="40" width="320" height="180" as="geometry"/>
+        </mxCell>
+          <mxCell id="ns1_api" value="API services" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="ns1">
+            <mxGeometry x="16" y="30" width="130" height="40" as="geometry"/>
+          </mxCell>
+          <mxCell id="ns1_web" value="Webhook emitter" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="ns1">
+            <mxGeometry x="170" y="30" width="130" height="40" as="geometry"/>
+          </mxCell>
+          <mxCell id="ns1_scen" value="Scenario engine" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="ns1">
+            <mxGeometry x="16" y="90" width="130" height="40" as="geometry"/>
+          </mxCell>
+          <mxCell id="ns1_data" value="Data slice" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="ns1">
+            <mxGeometry x="170" y="90" width="130" height="40" as="geometry"/>
+          </mxCell>
+
+        <mxCell id="ns2" value="Namespace: sbx-456" style="swimlane;rounded=1;html=1;startSize=22;strokeColor=#000000;fillColor=#dae8fc;" vertex="1" parent="k8s">
+          <mxGeometry x="360" y="40" width="320" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ns3" value="Namespace: sbx-N" style="swimlane;rounded=1;html=1;startSize=22;strokeColor=#000000;fillColor=#dae8fc;dashed=1;" vertex="1" parent="k8s">
+          <mxGeometry x="700" y="40" width="320" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prodNote" value="Separate account and VPC&#10;No peering&#10;No shared secrets" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#b85450;fillColor=#ffffff;" vertex="1" parent="laneProd">
+          <mxGeometry x="20" y="40" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="devUser" target="waf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1lbl" value="(1) HTTPS request" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="120" width="120" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" edge="1" parent="1" source="waf" target="apiGw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2lbl" value="(2) WAF to Gateway" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="115" width="140" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" edge="1" parent="1" source="apiGw" target="dnsIngress" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3lbl" value="(3) Route to Sandbox ingress" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="230" width="170" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" edge="1" parent="1" source="portal" target="ctrl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4lbl" value="(4) Create and manage sandbox" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="140" width="190" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" edge="1" parent="1" source="ctrl" target="k8s" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5lbl" value="(5) Provision namespace and policies" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="300" width="220" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e9" edge="1" parent="1" source="devUser" target="assistantUI" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9lbl" value="(9) Natural language prompts" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="95" width="180" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e10" edge="1" parent="1" source="assistantUI" target="mcp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10lbl" value="(10) Assistant to MCP (plan and tools)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e11a" edge="1" parent="1" source="mcp" target="toolSpec" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11b" edge="1" parent="1" source="mcp" target="toolScenario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11c" edge="1" parent="1" source="mcp" target="toolObs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11d" edge="1" parent="1" source="mcp" target="toolCodegen" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11lbl" value="(11) MCP calls Sandbox tools (read-only by default)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="900" y="355" width="360" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e12" edge="1" parent="1" source="assistantUI" target="portal" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12lbl" value="(12) Apply outputs to Explorer, snippets, Postman" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="880" y="120" width="360" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="eAI" edge="1" parent="1" source="mcp" target="llmRuntime" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eAIlbl" value="Assistant prompts to LLM (minimal context, redacted)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="360" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="noroute" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;dashed=1;endArrow=cross;endFill=1;" edge="1" parent="1" source="laneSandbox" target="laneProd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="noroutelbl" value="NO CONNECTIVITY (network, IAM, secrets)" style="text;html=1;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="250" width="280" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend" value="Legend&#10;(1)-(8) baseline flows&#10;(9) Dev prompts&#10;(10) Assistant to MCP&#10;(11) MCP to tools&#10;(12) Apply to Explorer" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="70" width="240" height="160" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
