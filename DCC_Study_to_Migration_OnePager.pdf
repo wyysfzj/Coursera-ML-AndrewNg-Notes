@@ -1,0 +1,286 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 6 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/BaseFont /Symbol /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+5 0 obj
+<<
+/BaseFont /ZapfDingbats /Name /F4 /Subtype /Type1 /Type /Font
+>>
+endobj
+6 0 obj
+<<
+/BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding /Name /F5 /Subtype /Type1 /Type /Font
+>>
+endobj
+7 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://martinfowler.com/microservices/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 729.9433 488.6518 739.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+8 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://martinfowler.com/bliki/BoundedContext.html)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 719.9433 470.0278 729.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://martinfowler.com/bliki/StranglerFigApplication.html)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 709.9433 458.4518 719.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://swagger.io/specification/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 683.9433 461.1318 693.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://oauth.net/2/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 673.9433 439.7878 683.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://microservices.io/patterns/apigateway.html)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 663.9433 486.4758 673.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+13 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://istio.io/latest/about/service-mesh/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 637.9433 483.3398 647.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+14 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://istio.io/latest/docs/concepts/traffic-management/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 627.9433 474.0038 637.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+15 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 617.9433 452.2278 627.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+16 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://kafka.apache.org/documentation/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 591.9433 453.5638 601.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+17 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://microservices.io/patterns/data/saga.html)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 581.9433 459.3558 591.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+18 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://martinfowler.com/bliki/CQRS.html)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 571.9433 467.3238 581.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+19 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://opentelemetry.io/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 545.9433 467.7878 555.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+20 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://principlesofchaos.org/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 535.9433 472.6758 545.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+21 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://istio.io/latest/docs/concepts/security/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 499.9433 458.4518 509.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+22 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://owasp.org/API-Security/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 489.9433 488.5558 499.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+23 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://developer.hashicorp.com/vault/docs)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 479.9433 451.3398 489.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+24 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.redhat.com/architect/ci-cd-microservices)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 453.9433 471.3318 463.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+25 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://argo-cd.readthedocs.io/en/stable/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 443.9433 443.3318 453.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+26 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://microservices.io/patterns/reliability/circuit-breaker.html)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 407.9433 465.5558 417.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+27 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://principlesofchaos.org/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 397.9433 472.6758 407.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+28 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://landscape.cncf.io/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 361.9433 476.2358 371.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+29 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://aws.amazon.com/api-gateway/)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 351.9433 479.7958 361.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+30 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://interviewing.io/guides/system-design-interview)
+>> /Border [ 0 0 0 ] /Rect [ 395.7638 341.9433 493.8838 351.5433 ] /Subtype /Link /Type /Annot
+>>
+endobj
+31 0 obj
+<<
+/Annots [ 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 
+  17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 
+  27 0 R 28 0 R 29 0 R 30 0 R ] /Contents 35 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 34 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+32 0 obj
+<<
+/PageMode /UseNone /Pages 34 0 R /Type /Catalog
+>>
+endobj
+33 0 obj
+<<
+/Author (\(anonymous\)) /CreationDate (D:20250915163120+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20250915163120+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
+>>
+endobj
+34 0 obj
+<<
+/Count 1 /Kids [ 31 0 R ] /Type /Pages
+>>
+endobj
+35 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2790
+>>
+stream
+Gatn(=]='I(<>>.'W5]G;U,`VeZCu`Z7X.:JO"&/@;:[d[bR5[ZK0C7fCS7iFDJ-tjHUFEJCLY!rTge3'@?6(W;lfV5^s359*0d`p^)c(2ILn7(ZVk%SrobEDR=Q(1+]XM[r!%pNpX&Q;oS:n%!s*sVqB664/>+meY+5"ZcojPFksk(nJ#0`?i[ZF(:-t.iAVUMflROm@JgKPl>$i5O4:OoP4^G3d*G*6KtEE_ji2Ulf\Ghbc$0YXX`;S_(EPei<n53>^t86NU&mRLVb%'8Wi=?'2<%dB2LfYm`<97:L8`5(0TdGSI6bKISH!nn8J(\N$-_(3_5EAaY`,k)/FA6GVJHQsJ;%hW$i^CYB+C-hDk6r%A8gBro0pGn%\3@@TE]5!,/$poE8-[jl(CtQ/rE#5_aH4;I\S;72D]H4%B['Tp_DC,k4&#`=kg>@gG*+-GM.chX%'T-Gp<G.HcKlIe[o]Z%2JX0Y#BXKn'ne+n"&at@D*>Pkp,rp:@tCoDWonnqSmrh2goRllV$9s.(j5%3GR=_dWQ(dl<mF42aH[N23M_IWm+Ppl`]]6>5o>eCSS?7&l\Q.f6dm7QFnKfj&"KH;jXTJPM7.>/[mRP=ga*#RoKPN^l8W/%:Ih7gEtLO^)%Lg.^.Q:1fkl8\nXTI%2oY:DNfI;XVhs]=W!l)3Mb2(lBK1PWu(ZZ,3=9Bi=^S@0:F[/69iW0.>nAtrl:>fH%e8[e<Q524VHMpCSJr@UG1eZVoa5[QaB3Ecl:c=QE(4b1hP\ti:5Dl0nY.cH%P(r;3m)Y[TRelqX>sd&H:(2roI^se`'P$W4QT,,9hi\/NH\FZlTKtjH3?`1V<-aQD:fL>uPZa\olp<"l3n@T<@ES<r*K+^IQZ4q/MYgpf7)]n&soHW'!m2Mb<.uY&:q3Xu$=3FCV&)&EZ4u["[A1>[aV$[_e3q_3167@!R70Z-0Namp1Ei.H2UQd\->0,u<E$b2:@tgOS\\@Pifg:W+eHLV!^#EBlsql<j_3]3^dee'?d72sC280^]!3-l`:C(CeU2Nf)5*@_4=P??mNrd,tY\CR?Kr9>PZ`VaTuSlopfpl,EbZl:hYnO'B)VD7&5MNCOC)El%&0BO)EVYV\d;%Nr/em%^A>h!"%88YrkB4K8&U9:qr'NZ7^RS)@@VLm1#N7KuBYQA/V84E'9L.`#5r,97#MVro`Uhi,h]+aeSK4tNEnpra,\Y/4>c'=>*lS-A.5/E1?[nM0Q:n=IX.^GkB38(/(EZWO$Hc4?M\7IeS"Wp?38;V+&47idSgWHb57`hNPUV>4n>5F0f5>)g5Xe6LHC=%,]nAke,OlOMrAkhFe'DGbD4CF=Zs98((EE#KnEnbOB('RQ"))LESYKBZkgoiTA^V'$)6+X@=@)TtMo.1Zdn)VD^lHLN6mZ"s(*_Re[]r03eAA!4&&jbV.u1-#%h*22@HB2b0f;][3,h/cehV3k8u(DqCL/jfHZk7%6XiEYA0GVjSVRE[jg+f'#Da/^&Wp"9,(:SrbCWSZXAZ[f7-^E%\?9ae4e:[7(_@\i,;r!^R_8jp1mRDttSPe+"$#.p!K@/;:7\5OZ9k&)H$@ipcmh*cu[Ca&p;9DEM%iPcBMIho@>h]A%Tf/2UjT6$gnRl%&\>'8m>mc[CWbr/l*+GsYMW.P>bo$D"[0>,S;UPhjlDsid9:JA&Rgc=87"BECUE:qW],$:kuV\rd?@IS$8JlgtD1TNAb*nc=R[]XV0=2TU*1Q)mUO%&8j7DKG=T`o0Q"I@\cVI]&pei4gO.UAu.T(>AnA3bq.reJPBP@R7rSO_qr]=B`ciIA@0]us-W\0#dN?!dbfle>;"?RuT50&/V^7e\BW)Fo]1J0Wc;s3_(DThWI)gAES#B,GY/d32\.GqdeQQ;'fZ+(A^J9Z*;:[P20uPbBuF8@XJ$9#@D@;&>H)>.:obD\:b\1f3MIZLYWl0=^s/rA7<km+q<G-febY%g446BM/S3kV$M%-.9EEf)0:4^UqHW@a8RjL8JC8@0cXUbdT9_<Ne>UE%deO(_m`*G@b0_,$c0)1UVW*c0.%mJdM$UONB>J/*hT`QultqeI3em+/8hb4oe:),k4'fMG'.kqq)g]8H35b>1@:d&fh#fr>g0IPG_.#DOue#ZDJc`U-N[35sH+PiZc=fPk2CY@N)0`M`HhRH,p[m=0>:kjSDAB:LAPW)*#<f2[:Q#1QfNWK2OO5aOMOD?8-SlDXr"N2QR16EF4=I"eRB60+C)lFGIACldSnU3SnOU9q(MQN&[(BrEP?n]5?_TA3P=2ppb[rOcH>U&4G46C%8@)nctVF=%VIQR*$\;^VLIQ5qJ5%Q>Z2%E!ZOQVeG0-nl,m!Z?KH`RYgSbZf5L&dHs)U3o:2:S_jCPR(jki[)DTQIY7sKO0do`_mhWno?!*S6]R]#cBN&O\'cDa\Nr&f.D>nUR@fi^G>Gj<j=(r\VHlgcRo8i=`$V.Uos:N!TrB'9WL%Ds4i=MgT]<$s[t>CV:]0s&l\4<eqcOk$em!:M26SW=jAQ&Rl?6rC,+kkJ'XUnm:M#BqZW`X8VlBmKd96i?PpPuJC/lIMWY3!/"8Po^\Fg0<X7;2Gn4#E!Fc$V]VbfOt]>:5sEcZ+uH24Zof*s=099rWiX)c+`o>OV"=?_u2q'M2t=.8IJl*'s2TWXEcp/\5T=4MQQbKk$laZ?]]<&7Kgem(Kc<J@27RB]kAK>/$/l*Df,G2k^;@WRe`UL.]PKtQIU7/-hA8;*@sUli5$p=L#W/b96aL!EnUH2C"cQ`9<2NGS`0rs+b_Y%R~>endstream
+endobj
+xref
+0 36
+0000000000 65535 f 
+0000000073 00000 n 
+0000000144 00000 n 
+0000000251 00000 n 
+0000000363 00000 n 
+0000000440 00000 n 
+0000000523 00000 n 
+0000000642 00000 n 
+0000000833 00000 n 
+0000001035 00000 n 
+0000001246 00000 n 
+0000001432 00000 n 
+0000001605 00000 n 
+0000001807 00000 n 
+0000002003 00000 n 
+0000002213 00000 n 
+0000002421 00000 n 
+0000002613 00000 n 
+0000002814 00000 n 
+0000003007 00000 n 
+0000003185 00000 n 
+0000003368 00000 n 
+0000003568 00000 n 
+0000003752 00000 n 
+0000003947 00000 n 
+0000004152 00000 n 
+0000004346 00000 n 
+0000004565 00000 n 
+0000004748 00000 n 
+0000004927 00000 n 
+0000005115 00000 n 
+0000005322 00000 n 
+0000005711 00000 n 
+0000005781 00000 n 
+0000006065 00000 n 
+0000006126 00000 n 
+trailer
+<<
+/ID 
+[<a733e44267600a3032bc0593283258fa><a733e44267600a3032bc0593283258fa>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 33 0 R
+/Root 32 0 R
+/Size 36
+>>
+startxref
+9008
+%%EOF
