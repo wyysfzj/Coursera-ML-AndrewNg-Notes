@@ -8876,7 +8876,7 @@ If you want, I can now:
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
 
 
-Gemini Review Report :
+Gemini Code Review Report :
 Codebase Review Report: HSBC Partner SDK (iOS)
 Overview
 The existing codebase has been reviewed against the HSBC Journey-Agnostic Partner SDK (iOS) Low-Level Design (LLD). The overall architecture, component breakdown, and public API closely align with the LLD. The core runtime engine, manifest processing, and bridge mechanisms are implemented and functional.
@@ -8927,3 +8927,74 @@ Current State: Not fully reviewed, but LLD mandates Unit, UI, and Integration te
 Action: Ensure ManifestTests, BridgeHandshakeTests, StateMachineTests, and ApiClientTests are implemented as per LLD Section 13.
 Recommendation
 I recommend prioritizing the Security items (KeyStore and Attestation) as they are critical for the secure operation of the SDK as described in the LLD. Without KeyStore, the Manifest signature verification (a core security control) cannot function.
+
+Gemini LLD review report :
+
+Low-Level Design (LLD) Review & Enhancements
+This document outlines recommended enhancements and critical observations based on a review of the HSBC Journey-Agnostic Partner SDK (iOS) LLD.
+
+1. Security Enhancements
+1.1. Stronger Binding for Bridge Handshake
+Current LLD: The bridge_hello sends a pageNonce. The SDK responds with a bridge_ready event containing a sessionProofJws.
+Gap: It is not explicitly stated that the sessionProofJws (or the SDK's signature of the bridge_ready message) includes the pageNonce.
+Recommendation: Explicitly require that the bridge_ready signature (or the sessionProofJws payload) must structurally include the pageNonce received from the page. This prevents replay attacks where a valid SDK response from a previous session is replayed to a new page instance.
+1.2. Manifest Versioning on Resume
+Current LLD: SessionManager saves stepPointer and journeyId. loadSnapshot restores them.
+Gap: If the Manifest is updated (e.g., steps reordered or removed) between the time the snapshot was saved and when it is resumed, the stepPointer might point to a non-existent or wrong step.
+Recommendation: Store the manifestVersion (and potentially a hash of the manifest) in the Snapshot. On resume, verify that the currently loaded manifest matches the snapshot's version. If not, invalidate the resume token and restart the journey.
+1.3. External Link Handling (T&Cs)
+Current LLD: "On disallowed navigation → error and termination."
+Gap: Real-world journeys often require opening Terms & Conditions or Privacy Policies hosted on public HSBC domains or third parties. Terminating the journey for any navigation outside the allowed origins is too aggressive for these use cases.
+Recommendation: Introduce a secondaryAllowedOrigins or externalLinkPolicy in the Manifest. If a navigation matches this policy, open it in an external browser (SFSafariViewController) or a separate modal, rather than terminating the journey.
+2. Resilience & Reliability
+2.1. Offline/Weak Network Handling
+Current LLD: "Graceful network failure handling (retries, backoff)".
+Gap: The LLD focuses on API retries. It does not detail how the Web Container handles network failures (e.g., failing to load the initial HTML).
+Recommendation: Define a "Retry/Reload" state for the HybridContainer. If the WebView fails to load the page, the SDK should show a native "Network Error" screen with a "Retry" button, rather than just returning .failed.
+2.2. Manifest Caching Strategy
+Current LLD: ManifestLoader fetches JM JSON via HTTP GET.
+Gap: No caching strategy is defined. Fetching the manifest on every startJourney adds latency and a point of failure.
+Recommendation: Implement a caching layer for the Manifest (e.g., Cache-Control respect or a dedicated ETag check). This improves TTI (Time to Interactive).
+3. Architecture & Extensibility
+3.1. Guard Expression Capabilities
+Current LLD: "Simple expression evaluator (==, !=, >, <, &&, ||)."
+Gap: Business logic often requires checking if a value exists in a list (e.g., country in ["US", "UK"]) or string matching.
+Recommendation: Add contains operator for arrays/strings and matches for regex (if needed) to the Guard Expression DSL.
+3.2. Native UI Fallbacks
+Current LLD: The design is heavily Web-driven.
+Gap: If the WebView is completely broken (e.g., OS update breaks JS bridge), there is no fallback.
+Recommendation: While out of scope for a "Journey-Agnostic" SDK, consider a "Maintenance Mode" check in the ManifestLoader. If the backend flags the journey as "down", the SDK should return a specific error or show a native "Under Maintenance" screen before even trying to load the WebView.
+4. Lifecycle Management
+4.1. App Backgrounding/Foregrounding
+Current LLD: Not explicitly covered.
+Gap: Banking apps often require biometric re-auth if the app is backgrounded for more than X seconds.
+Recommendation: Add a LifecycleManager component. If the host app enters the background while a journey is active, the SDK should:
+Blur the WebView (privacy).
+On foreground, potentially ask for Biometric re-auth (if configured in Manifest) before revealing the content.
+4.2. Memory Management
+Current LLD: "Efficient memory & CPU usage".
+Gap: WKWebView processes can terminate unexpectedly (jetsam).
+Recommendation: Handle webViewWebContentProcessDidTerminate. The SDK should automatically reload the current step URL to restore the session state if the web process crashes.
+5. API & Integration
+5.1. Context Token Expiry
+Current LLD: contextToken is passed at start.
+Gap: If the journey is long, the contextToken might expire.
+Recommendation: Define a mechanism for the SDK to request a fresh contextToken from the Partner App (e.g., via a delegate callback) without restarting the journey.
+5.2. Theme/Style Injection
+Current LLD: Not mentioned.
+Gap: Partners might want the HSBC pages to match their app's dark/light mode preference.
+Recommendation: Pass the UIUserInterfaceStyle (Dark/Light) to the WebView via the Bridge (e.g., in bridge_hello payload) or query parameters, so the content can adapt.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
