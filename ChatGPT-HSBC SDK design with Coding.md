@@ -8874,3 +8874,56 @@ If you want, I can now:
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+
+
+Gemini Review Report :
+Codebase Review Report: HSBC Partner SDK (iOS)
+Overview
+The existing codebase has been reviewed against the HSBC Journey-Agnostic Partner SDK (iOS) Low-Level Design (LLD). The overall architecture, component breakdown, and public API closely align with the LLD. The core runtime engine, manifest processing, and bridge mechanisms are implemented and functional.
+
+However, several components are currently in a stubbed or incomplete state, primarily in the Security domain. These need to be addressed to meet the LLD's security and functional requirements for a production-ready SDK.
+
+Compliance Summary
+Public API: HSBCPartnerSdk, HSBCInitConfig, JourneyStartParams, and JourneyResult match the LLD specifications.
+Runtime Engine: StateMachine, SessionManager, ApiClient, and ManifestLoader are well-implemented and follow the design patterns.
+Container & Bridge: HybridContainer and Bridge correctly implement the secure JS-Native communication and origin checks.
+Telemetry: EventBus and Telemetry (Traceparent) are present and aligned.
+Plugins: The HSBCPlugins target exists with 
+BiometricAuth.swift
+.
+Identified Gaps & Enhancements
+The following items require enhancement or implementation:
+
+1. Security: KeyStore Implementation (Critical)
+Current State: 
+KeyStore.swift
+ is a stub. The loadInitialKeys() method is empty, and refresh() is a placeholder.
+LLD Requirement: "Initial keys are bundled; additional keys fetched via remote config."
+Action: Implement loading of bundled public keys (e.g., from a .json resource or hardcoded constants) to enable JWS signature verification for Manifests.
+2. Security: Attestation (Critical)
+Current State: AttestationCollector in 
+Bridge.swift
+ is a stub that returns a UUID or a simple Base64 string.
+LLD Requirement: "Collects attestation (DeviceCheck/App Attest → base64 string)."
+Action: Implement real DCAppAttestService or DCDevice integration to provide genuine device integrity proofs.
+3. Security: Verification Utilities
+Current State: 
+Verification.swift
+ is an empty file.
+LLD Requirement: Implicitly required for various security checks (e.g., JWS, Pinning).
+Action: Either implement shared verification logic here or remove the file if logic is sufficiently covered in 
+JWS.swift
+ and ManifestLoader.
+4. Runtime: Remote Config Fetching
+Current State: KeyStore.refresh() is a stub.
+LLD Requirement: "Remote Config Service... Controls JM/OAS URLs... Feature flags".
+Action: Implement the logic to fetch and apply remote configuration updates, including key rotation.
+5. Network: Error Mapping
+Current State: SdkErrorCode exists, but ApiClient performs only basic mapping.
+LLD Requirement: "Normalizes errors to SdkErrorCode... Fatal (e.g., PINNING_FAIL)... Recoverable".
+Action: Enhance ApiClient to map a wider range of URLError and HTTP status codes to specific SdkErrorCode values (e.g., COMPLIANCE_HOLD, SCA_REQUIRED).
+6. Testing
+Current State: Not fully reviewed, but LLD mandates Unit, UI, and Integration tests.
+Action: Ensure ManifestTests, BridgeHandshakeTests, StateMachineTests, and ApiClientTests are implemented as per LLD Section 13.
+Recommendation
+I recommend prioritizing the Security items (KeyStore and Attestation) as they are critical for the secure operation of the SDK as described in the LLD. Without KeyStore, the Manifest signature verification (a core security control) cannot function.
