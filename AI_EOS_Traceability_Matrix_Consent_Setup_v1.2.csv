@@ -1,0 +1,7 @@
+Invariant,Rule,AtomicTasks,Evidence,Gates,CodeLocations
+INV-01,Signature required; missing/invalid => 401,"OB-AT-03;OB-AT-05;OB-AT-06;OB-AT-09","outputs/*_conformance.log;results.jsonl;EVIDENCE_SIGNATURE_VERIFIED","B-INV-01;S-FMT;S-VET;D-SCOPE","internal/security/*;internal/atomic/consent/signature.go;tests/invariants_test.go"
+INV-02,Idempotency binds request hash; mismatch => 409,"OB-AT-04;OB-AT-05;OB-AT-09","outputs/*_conformance.log;results.jsonl;EVIDENCE_IDEMPOTENCY_*","B-INV-02;D-SCOPE","internal/atomic/consent/idempotency.go;internal/atomic/consent/store.go;tests/invariants_test.go"
+INV-03,Client binding on GET; mismatch non-leak (404 default),"OB-AT-06;OB-AT-09","outputs/*_conformance.log;results.jsonl;EVIDENCE_ACCESS_*","B-INV-03;D-SCOPE","internal/atomic/consent/service.go;tests/invariants_test.go"
+INV-04,No PII in responses/logs/audit,"OB-AT-07;OB-AT-05;OB-AT-09","outputs/*_pii_scan.log;outputs/*_conformance.log;results.jsonl","S-PII-SCAN;B-INV-04","internal/httpapi/*;internal/atomic/consent/*;internal/audit/*"
+INV-05,Expiry sanity (RFC3339; >= now+60s),"OB-AT-02;OB-AT-05","outputs/*_conformance.log;results.jsonl","B-INV-05","internal/consent/model.go"
+INV-06,Challenge randomness,"OB-AT-05","(optional) uniqueness evidence;results.jsonl","B-INV-06","internal/atomic/consent/util.go"
