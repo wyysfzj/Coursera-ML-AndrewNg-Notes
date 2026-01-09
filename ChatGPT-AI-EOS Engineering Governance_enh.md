@@ -1,4 +1,15 @@
-#go.mod
+# no atomic 
+
+Implement an Open Banking consent setup service in Go.
+Requirements:
+
+POST /consents creates a consent and returns consent_id, expires_at, challenge
+Support idempotency via Idempotency-Key header
+Make it user-friendly and resilient (avoid unnecessary failures)
+Add sensible logging and error handling
+Prefer clean architecture and reusable components
+
+# go.mod
 
 module openbanking-consent
 
