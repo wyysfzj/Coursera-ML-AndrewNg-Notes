@@ -1,3 +1,18 @@
+#go.mod
+
+module openbanking-consent
+
+go 1.18
+
+require (
+    github.com/gorilla/mux v1.8.0
+    github.com/golang/mock v1.5.0
+    github.com/stretchr/testify v1.7.0
+)
+
+
+
+
 # AI-EOS Engineering Governance
 
 **User:** Anonymous (os86@naifeistation.com)  
