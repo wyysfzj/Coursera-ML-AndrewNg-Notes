@@ -1,3 +1,5 @@
+https://claudecode.tangshuang.net/
+
 # 改善代码质量提示生成
 
 **User:** Anonymous (os86@naifeistation.com)  
