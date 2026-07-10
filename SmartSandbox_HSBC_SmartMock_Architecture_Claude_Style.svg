@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+  <filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.18"/></filter>
+  <style>
+    .title { font: bold 34px Arial; fill:#111827; }
+    .subtitle { font: 18px Arial; fill:#4b5563; }
+    .box { rx:18; ry:18; filter:url(#shadow); }
+    .h { font:bold 20px Arial; fill:#111827; }
+    .t { font:16px Arial; fill:#374151; }
+    .small { font:14px Arial; fill:#4b5563; }
+    .line { stroke:#64748b; stroke-width:3; fill:none; marker-end:url(#arrow); }
+  </style>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+    <path d="M0,0 L12,6 L0,12 z" fill="#64748b"/>
+  </marker>
+</defs>
+
+<text x="80" y="70" class="title">HSBC SmartSandbox Architecture</text>
+<text x="80" y="105" class="subtitle">Developer Portal + SmartMock Runtime: Open Banking Integration Simulation Platform</text>
+
+<!-- Developer -->
+<rect x="80" y="220" width="240" height="120" fill="#dbeafe" class="box"/>
+<text x="120" y="265" class="h">TPP Developer</text>
+<text x="110" y="300" class="t">Partner Application</text>
+<text x="110" y="325" class="t">API Consumer</text>
+
+<!-- Portal -->
+<rect x="430" y="180" width="300" height="200" fill="#dcfce7" class="box"/>
+<text x="475" y="225" class="h">HSBC Developer Portal</text>
+<text x="465" y="265" class="t">• API Catalogue</text>
+<text x="465" y="295" class="t">• Documentation</text>
+<text x="465" y="325" class="t">• Credential Management</text>
+<text x="465" y="355" class="t">• Sandbox Entry Point</text>
+
+<!-- Control -->
+<rect x="850" y="150" width="320" height="250" fill="#fef3c7" class="box"/>
+<text x="900" y="200" class="h">SmartSandbox Control Plane</text>
+<text x="890" y="240" class="t">Sandbox Manager</text>
+<text x="890" y="270" class="t">Lifecycle Management</text>
+<text x="890" y="300" class="t">Provisioning</text>
+<text x="890" y="330" class="t">IAM / Policy / Quota</text>
+<text x="890" y="360" class="t">Audit</text>
+
+<!-- Runtime -->
+<rect x="820" y="520" width="420" height="330" fill="#ede9fe" class="box"/>
+<text x="900" y="570" class="h">Sandbox Runtime</text>
+<text x="875" y="610" class="t">SmartMock Execution Engine</text>
+<text x="875" y="645" class="small">OpenAPI Import</text>
+<text x="875" y="670" class="small">Dynamic Endpoint Mapping</text>
+<text x="875" y="695" class="small">Groovy Business Logic</text>
+<text x="875" y="720" class="small">Schema Validation</text>
+<text x="875" y="745" class="small">Dynamic Mock Data</text>
+<text x="875" y="770" class="small">Forward Proxy</text>
+<text x="875" y="805" class="small">Runtime Isolation</text>
+
+<!-- extensions -->
+<rect x="1320" y="470" width="220" height="100" fill="#fee2e2" class="box"/>
+<text x="1350" y="510" class="h">Scenario Engine</text>
+<text x="1340" y="540" class="small">Journey Simulation</text>
+
+<rect x="1320" y="610" width="220" height="100" fill="#fee2e2" class="box"/>
+<text x="1350" y="650" class="h">Data Engine</text>
+<text x="1340" y="680" class="small">Customer State</text>
+
+<rect x="1320" y="750" width="220" height="100" fill="#fee2e2" class="box"/>
+<text x="1350" y="790" class="h">Webhook Engine</text>
+<text x="1340" y="820" class="small">Events / Retry</text>
+
+<!-- Journey -->
+<rect x="430" y="550" width="260" height="300" fill="#cffafe" class="box"/>
+<text x="485" y="600" class="h">Open Banking Journey</text>
+<text x="470" y="645" class="t">1. Consent Creation</text>
+<text x="470" y="680" class="t">2. Authorisation</text>
+<text x="470" y="715" class="t">3. Account Access</text>
+<text x="470" y="750" class="t">4. Payment</text>
+<text x="470" y="785" class="t">5. Webhook Event</text>
+
+<!-- arrows -->
+<path class="line" d="M320 280 L430 280"/>
+<path class="line" d="M730 280 L850 260"/>
+<path class="line" d="M1010 400 L1010 520"/>
+<path class="line" d="M690 700 L820 680"/>
+<path class="line" d="M1240 650 L1320 520"/>
+<path class="line" d="M1240 700 L1320 660"/>
+<path class="line" d="M1240 760 L1320 800"/>
+
+<!-- footer -->
+<text x="80" y="930" class="subtitle">Architecture Principle: API Sandbox → Business Integration Simulation Platform</text>
+</svg>
