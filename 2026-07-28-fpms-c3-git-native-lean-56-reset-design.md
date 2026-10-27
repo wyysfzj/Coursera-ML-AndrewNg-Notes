@@ -1,3 +1,44 @@
+
+{
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.iconTheme": "material-icon-theme",
+
+  "editor.fontFamily": "'Maple Mono NF CN', 'JetBrains Mono', Menlo, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 1.6,
+  "editor.letterSpacing": 0.5,
+
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "explorer.decorations.badges": false,
+
+  "workbench.colorCustomizations": {
+    "[Solarized Dark]": {
+      // 统一高亮色（Solarized 青色）
+      "activityBar.activeBorder": "#2AA198",
+      "activityBarBadge.background": "#2AA198",
+      "tab.activeBorder": "#2AA198",
+      "tab.activeBorderTop": "#2AA198",
+      "list.activeSelectionForeground": "#2AA198",
+      "list.highlightForeground": "#2AA198",
+      "editorSuggestWidget.highlightForeground": "#2AA198",
+      "statusBarItem.remoteBackground": "#2AA198",
+      "progressBar.background": "#2AA198",
+      "textLink.foreground": "#2AA198",
+      "focusBorder": "#2AA198",
+
+      // 增加层次感（边框）
+      "sideBar.border": "#073642",
+      "panel.border": "#073642",
+      "editorGroup.border": "#073642",
+
+      // 可选：稍微加深当前行高亮
+      "editor.lineHighlightBackground": "#073642"
+    }
+  }
+}
+
 # FPMS C3.1 Git-native Lean 5.6 Reset 综合设计
 
 - 日期：2026-07-28
